@@ -43,6 +43,5 @@ public class ClassWork {
 
 Thanks to the following people who have contributed to this project:
 
-- [Contributor 1](https://github.com/contributor1)
-- [Contributor 2](https://github.com/contributor2)
-- ...
+[![Contributors](https://img.shields.io/github/contributors/dfjkfkf/your-repo.svg)](https://github.com/dfjkfkf/your-repo/graphs/contributors)
+
