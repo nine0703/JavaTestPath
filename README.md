@@ -43,5 +43,4 @@ public class ClassWork {
 
 Thanks to the following people who have contributed to this project:
 
-[![Contributors](https://img.shields.io/github/dfjkfkf/your-repo.svg)](https://github.com/dfjkfkf)
-
+[![贡献者](https://img.shields.io/github/contributors/nine0703/JavaTestPath.svg?label=贡献者)](https://github.com//nine0703/JavaTestPath/graphs/contributors)
