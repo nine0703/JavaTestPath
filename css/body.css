@@ -1,0 +1,125 @@
+@charset "UTF-8";
+.a {
+	list-style:none;
+}
+.rightli {
+	color: white;
+	padding:5px;
+}
+.section {
+    background-color:#333;
+    color:white;
+    margin:20px;
+    padding:30px;
+}	
+.bot a {
+	color: #ccc;
+	text-decoration: none;
+	padding: 3px 3px;
+	font-size: 12px
+}
+.bot p {
+	font-size: 12px;
+}
+.logo {
+  background: white;
+}
+#nav {
+    background-color:#333;
+    padding:3px;
+}
+
+*{margin:0;}
+ul {
+	list-style-type: none;
+ 	margin: 0;
+ 	padding: 0;
+  	overflow: hidden;
+  	background-color: #333;
+}
+ul li{
+	float: right;
+} 
+ul li a{
+	display: block;
+  	color: white;
+  	text-align: center;
+  	padding: 16px 16px;
+  	text-decoration: none;
+ }
+#nav li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #008CBA;
+}
+#footer {
+	background-color:#333;
+    color: #ccc;
+    clear:both;
+    text-align:center;
+   	padding:5px;
+}
+
+#footer ul li a:hover:not(.active) {
+  background-color: #111;
+  color: white;
+}
+#find {    //搜索框id
+  position:absolute;
+  float: right;
+  //background: #ccc;
+  height: 25px;
+  width: 260px;
+  padding: 3px 30px;
+  padding-right: 6px;
+  border:0px solid #a1a1a1;
+  border-radius:15px;
+  -moz-border-radius:25px;
+  z-index:1;
+}
+.find {
+  position:relative;
+  padding: 3px;
+  margin: 12px 7px;
+  margin-bottom: 3px;
+  float: left;
+  padding-left:5%;
+}
+.input {
+  position:absolute;
+  margin: 0px;
+  text-align:center;
+  float: right;
+  height: 22px;
+  width: 22px;
+  padding: 5px;
+  color: black;
+  cursor: pointer;
+  z-index:2;
+}
+#find:focus { 
+  float: left;
+  //background: #ccc;
+  height: 25px;
+  width: 260px;
+  padding: 3px 30px;
+  padding-left: 9px;
+  border:0px solid #a1a1a1;
+  border-radius:15px;
+  -moz-border-radius:25px;
+  z-index: 1;
+}
+.input:focus {
+  position:absolute;
+  margin: 0px;
+  text-align:center;
+  float: left;
+  height: 22px;
+  width: 22px;
+  padding: 15px;
+  padding-left: 50; 
+  color: black;
+  cursor: pointer;
+}

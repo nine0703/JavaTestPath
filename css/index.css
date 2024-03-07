@@ -1,0 +1,11 @@
+.main-slider {
+	display: block;
+}
+.main-slider ul {
+	background: white;
+	text-align: center;
+	height: 500px;
+}
+.main-slider ul img {
+	text-align: center;
+}

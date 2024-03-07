@@ -1,0 +1,31 @@
+.profile {
+	width: 178px;
+	height: 178px;
+	border-radius: 50%;
+	overflow: hidden;
+	color: white;
+	float: left;
+}
+.ranking {
+    background-color:#333;
+    color:white;
+    margin:20px;
+    padding:30px;
+    height: 230px;
+    width: 800px;
+    margin-left: 25% 
+}
+.ranking img{
+	width: 200px;
+	height: 180px;
+}
+.ranking h2 {
+	color: white;
+	padding: 15ps;
+}
+.ranking ul {
+	padding: 10px;
+}
+.ranking p {
+	float: left;
+}

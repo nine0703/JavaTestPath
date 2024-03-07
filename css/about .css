@@ -1,0 +1,19 @@
+.about {
+    background-color:#333;
+    color:white;
+    margin:20px;
+    padding:30px;
+}
+.about h1 {
+	margin: 10px;
+	padding: 10px;
+}
+.about p{
+	text-align:center;
+	margin: 10px;
+	padding: 10px;
+}
+#about {
+    width:350px;
+    float:left;
+    padding:10px;	
