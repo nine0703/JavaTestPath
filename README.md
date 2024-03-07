@@ -39,21 +39,10 @@ public class ClassWork {
 
 ```
 
-####  response
+## Contributors
 
-```java
-package com.test.main;
+Thanks to the following people who have contributed to this project:
 
-public class ClassWork {
-    public static void main(String[] args) {
-        int [] arr = new int[5];
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = i + 1;
-        }
-        for (int j : arr){
-            System.out.print(j+" ");
-        }
-    }   //  method main end.
-}   // class end.
-```
+- [Contributor 1](https://github.com/contributor1)
+- [Contributor 2](https://github.com/contributor2)
+- ...
