@@ -1,0 +1,343 @@
+package com.test.main;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class ATM {
+    private ArrayList<account> accounts = new ArrayList<>();    // 记住账户对象的集合
+    private account loginAcc;
+    private final Scanner sc = new Scanner(System.in);      // 定义绝对变量sc
+
+    public ATM() {
+    }
+
+    public ATM(ArrayList<account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public void start() {
+        while (true) {
+            System.out.println("======欢迎进入系统======");
+            System.out.println("请选择您的功能：");
+            System.out.println("0.离开");
+            System.out.println("1.开户功能");
+            System.out.println("2.用户登录");
+            System.out.println("======================");
+            System.out.print("请选择：");
+            int r1 = sc.nextInt();
+            switch (r1){
+                case 0:
+                    System.exit(0);
+                case 1:
+                    // 开户逻辑
+                    createAccount();
+                    break;
+                case 2:
+                    // 登录逻辑
+                    login();
+                    break;
+                default:
+                    System.out.println("输入的命令不合法。");
+            }
+        }
+
+    }
+    public void login() {
+        System.out.println("=======登录系统=======");
+        if (accounts.isEmpty()){
+            System.out.println("目前用户列表中没有用户对象。");
+            return; // 跳出方法
+        }
+        System.out.println("请输入您的卡号:");
+        while (true) {
+            String id = sc.next();
+            // 根据卡号查找对象，有就返回，没有就返回null
+            account acc = findAccountById(Integer.parseInt(id));
+            if (acc == null){
+                System.out.println("卡号不存在，请重新输入您的卡号：");
+            }else {
+                System.out.print("请输入密码:");
+                while (true) {
+                    String pwd = sc.next();
+                    if (acc.getPassWord().equals(pwd)){
+                        System.out.println("登录成功，欢迎您，"+acc.getUserName()+"!!!");
+                        loginAcc = acc;
+                        logined();
+                        break;
+                    }else {
+                        System.out.println("密码错误，请重新输入：");
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    private void logined() {
+        // 登录后的账户操作
+        while (true) {
+            System.out.println("*******账户操作*******");
+            System.out.println("尊贵的"+loginAcc.getUserName()+",欢迎您!您的卡号是:"+ loginAcc.getCardID());
+            System.out.println("1.查询账户");
+            System.out.println("2.存款");
+            System.out.println("3.取款");
+            System.out.println("4.转账");
+            System.out.println("5.修改密码");
+            System.out.println("6.退出账户");
+            System.out.println("7.注销当前账户");
+            System.out.print("请选择您所需的业务编号:");
+            String input = sc.next();
+            int i = Integer.parseInt(input);
+            switch (i){
+                case 1:
+                    // 查询账户
+                    ShowAccount(loginAcc);
+                    break;
+                case 2:
+                    // 存款
+                    System.out.println("请输入存款金额：");
+                    double addMoney =  Double.parseDouble(sc.next());
+                    AddMoney(loginAcc,addMoney);
+                    break;
+                case 3:
+                    // 取款
+                    System.out.println("请输入取款金额：");
+                    double getMoney =  Double.parseDouble(sc.next());
+                    GetMoney(loginAcc,getMoney);
+                    break;
+                case 4:
+                    // 转账
+                    System.out.println("请输入目标卡号：");
+                    int target = Integer.parseInt(sc.next());   // 目标卡号
+                    account bePay = findAccountById(target);
+                    if (bePay == null){
+                        System.out.println("找不到目标账户，请核对。");
+                    }else {
+                        System.out.println("请输入转账金额：");
+                        double pay = Double.parseDouble(sc.next()); // 转账金额
+                        PayMoney(loginAcc,bePay,pay);
+                    }
+                    break;
+                case 5:
+                    ChangePasswd(loginAcc);     // 修改密码
+                    break;
+                case 6:
+                    System.out.println("退出登录成功，再见！");
+                    return;     // 跳出方法
+                case 7:
+                    // 销户操作
+                    if (delAccount(loginAcc)){
+                        return;
+                    }else {
+                        break;
+                    }
+                default:
+                    System.out.println("您输入的命令无法识别，请重新输入。");
+            }
+        }
+    }
+
+    private boolean delAccount(account loginAcc) {
+        System.out.print("确认需要销毁账户吗？（y/n）");
+        while (true) {
+            String input = sc.next();
+            //  判断input是否为y/n，大小写不敏感。
+            if (input.equalsIgnoreCase("y")){
+                if (loginAcc.getMoney()>0){
+                    System.out.println("账户里还有钱，不如花光再销户~");
+                    return false;
+                }else {
+                    // 销户逻辑
+                    System.out.println("信息无误，正在为您销户。");
+                    accounts.remove(loginAcc);  // 销户操作
+                    return true;
+                }
+            }else if(input.equalsIgnoreCase("n")){
+                System.out.println("您拒绝了销户，正在返回。");
+                return false;
+            }else{
+                System.out.println("确认需要销毁账户吗？（y/n）");
+            }
+        }
+    }
+
+    private void PayMoney(account loginAcc,account bePay , double pay) {
+        // 判断日额度逻辑
+        if (loginAcc.getLimit() == 0){
+            System.out.println("您的日额度已经用完了");
+            return;
+        }
+        // 转账逻辑
+        if (loginAcc.getMoney() >= pay){
+            // 扣钱
+            loginAcc.setMoney(loginAcc.getMoney()-pay);
+            // 给他加钱
+            bePay.setMoney(bePay.getMoney()+pay);
+            // 减日额度
+            loginAcc.setLimit(loginAcc.getLimit()-pay);
+            System.out.println("转账成功！您的账户余额为："+loginAcc.getMoney());
+            System.out.println("您的日额度还有"+loginAcc.getLimit());
+        }else {
+            System.out.println("您的余额不足，转账失败！");
+        }
+    }
+
+    private void ChangePasswd(account loginAcc) {
+        System.out.print("请输入新密码：");
+        while (true){
+            String pwd = sc.next();
+            if (pwd.length()<5){
+                System.out.print("密码长度过短，不安全，请重新输入：");
+            }else {
+                boolean sign = pwd.matches(".*[A-Z].*");
+                if (sign){
+                    System.out.print("确认密码：");
+                    String password2 = sc.next();
+                    if (pwd.equals(password2)){
+                        loginAcc.setPassWord(pwd);  // 更新密码
+                        System.out.println("密码更新成功！");
+                        break;
+                    }else {
+                        System.out.print("两次输入的密码不一致，请重新输入密码：");
+                    }
+                }else {
+                    System.out.print("您的密码需要包含大写字母，请重新输入：");
+                }
+            }
+        }
+    }
+
+    private void GetMoney(account loginAcc,double getMoney) {
+        if (loginAcc.getMoney()-getMoney < 0){
+            System.out.println("您的账户中没有这么多钱。");
+        }else {
+            loginAcc.setMoney(loginAcc.getMoney()-getMoney);
+        }
+
+    }
+
+    private void AddMoney(account loginAcc,double addmoney) {
+        loginAcc.setMoney(loginAcc.getMoney()+addmoney);
+    }
+
+    private void ShowAccount(account loginAcc) {
+        System.out.println("======用户详情======");
+        System.out.println("用户卡号:"+loginAcc.getCardID());
+        System.out.println("户主:"+loginAcc.getUserName());
+        System.out.println("性别:"+loginAcc.getSex());
+        System.out.println("余额:"+loginAcc.getMoney());
+        System.out.println("每日限额:"+loginAcc.getLimit());
+        System.out.println("==================");
+    }
+
+    private account findAccountById(int id) {
+        for (account j : accounts) {
+            if (j.getCardID() == id){
+                return j;
+            }
+        }
+        return null;
+    }
+
+    private void createAccount(){
+        System.out.println("******欢迎进行开户******");
+
+        // 姓名输入逻辑
+        System.out.println("请输入您的用户名：");
+        String name ;
+        while (true) {
+            name = sc.next();
+            if (name.length()>6){
+                System.out.println("你的名字太长了，请重新输入：");
+            }else {
+                break;
+            }
+        }
+        // 性别输入逻辑
+        System.out.println("请输入您的性别：(男/女)");
+        char sex;
+        while (true){
+            var input = sc.next();
+            if (input.equals("男")||input.equals("女")){
+                sex = input.charAt(0);
+                break;
+            }else{
+                System.out.println("您的性别只能是男或女，请重新输入：");
+            }
+        }
+        // 密码输入逻辑
+        System.out.println("请输入密码：");
+        String password ;
+        while (true){
+            password = sc.next();
+            if (password.length()<5){
+                System.out.println("密码长度过短，不安全，请重新输入：");
+            }else {
+                boolean sign = password.matches(".*[A-Z].*");
+                if (sign){
+                    System.out.println("确认密码：");
+                    String password2 = sc.next();
+                    if (password.equals(password2)){
+                        break;
+                    }else {
+                        System.out.println("两次输入的密码不一致，请重新输入密码：");
+                    }
+                }else {
+                    System.out.println("您的密码需要包含大写字母，请重新输入：");
+                }
+            }
+        }
+        // 每日限额输入逻辑
+        System.out.println("请输入每日限额：");
+        int limit = 0;
+        while (true){
+            var input = sc.next();
+            try{
+                limit = Integer.parseInt(input);
+                if (limit < 0 ){
+                    System.out.println("您的每日限额不能是负数。");
+                }else {
+                    System.out.println("每日限额更新成功。");
+                    break;
+                }
+            }catch (NumberFormatException e) {
+                // 如果输入的不是数字，则捕获该异常
+                System.out.println("输入无效，必须输入一个正整数.");
+            }
+        }
+
+        //  信息校对逻辑
+        System.out.println("++++++用户信息确认++++++");
+        System.out.println("姓名："+name);
+        System.out.println("性别："+sex);
+        System.out.println("密码："+password);
+        System.out.println("每日限额："+ limit);
+        System.out.println("+++++++++++++++++++++");
+        System.out.print("以上信息确认无误吗？（y/n）");
+        String input = sc.next();
+
+        //  判断input是否为y/n，大小写不敏感。
+        if (input.equalsIgnoreCase("y")){
+            System.out.println("信息无误，正在为您开户。");
+            // 开户逻辑
+            int id = createId();   // 调用createId方法，生成随机id。
+            // 新建account对象，准备写入对象。
+            account acc = new account(id,name,sex,password,limit);
+            // 添加账户对象至集合account
+            accounts.add(acc);
+            System.out.println("开户成功！"+acc.getUserName()+",您的卡号是："+id);
+        }else if(input.equalsIgnoreCase("n")){
+            System.out.println("信息有误，请重新输入。");
+        }else{
+            System.out.println("对不起，我不知道你是什么意思。");
+
+        }
+    }
+    private int createId(){
+        Random rc = new Random();
+        return rc.nextInt(1999999,7999999)+2000000;
+    }
+
+}
+

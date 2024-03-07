@@ -1,0 +1,45 @@
+package com.test.main;
+
+import java.util.Random;
+import java.util.Scanner;
+/**
+ * 抢红包案例 金额 9 666 188 520 99999
+ **/
+public class Main {
+
+    public static void main(String[] args) {
+        int [] monkey = {9,666,188,520,99999};
+        int [] rcmonkey = rand(monkey);
+        start(rcmonkey);
+
+    }
+
+    private static int[] rand(int[] monkey) {
+//      打乱数组内容
+        Random rc = new Random();
+        int [] cache = new int[monkey.length];
+        boolean [] cachebool = new boolean[cache.length];
+        for (int j : monkey){
+            int index;
+            do {
+                index = rc.nextInt(monkey.length);
+            } while (cachebool[index]);
+            // 当索引列表中对应的随机数据位置未填充，则下一步
+            // 如存在数据索引，则继续while循环。
+            cache[index] = j;
+            cachebool[index] = true;
+
+        }
+        return cache;
+    }
+
+    private static void start(int[] monkey) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < monkey.length; i++) {
+            sc.next();
+            System.out.println("congratuation,honbao is "+ monkey[i]);
+        }
+    }
+
+}
+

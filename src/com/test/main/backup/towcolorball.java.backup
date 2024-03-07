@@ -1,0 +1,181 @@
+package com.test.main;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    /**
+     * 双色球 6个红球（1-33） 1个蓝球（1-16）不能重复
+     **/
+    public static void main(String[] args) {
+        int [] usernumbers = usernumber();       // 用户输入
+        int [] luckynumbers = luckynumber();     // 方法生成
+        int [] luckydata = judgement(usernumbers,luckynumbers);    // 对比用户数据和生成数据
+
+        System.out.print("用户输入为 ");
+        for (int i = 0; i < usernumbers.length; i++) {
+            // 三元运算，检测元素是否是为usernumbers数组中的最后一个，否则输出 [数值+","] 拼接成字符串。
+            String data = i == usernumbers.length-1 ? Integer.toString(usernumbers[i]) : usernumbers[i] + "," ;
+            System.out.print(data);
+        }
+        System.out.println();
+        System.out.print("幸运号码为 ");
+        for (int i = 0; i < luckynumbers.length; i++) {
+            // 三元运算，检测元素是否是为lucknumbers数组中的最后一个，否则输出 [数值+","] 拼接成字符串。
+            String  data = i == luckynumbers.length-1 ? Integer.toString(luckynumbers[i]) : luckynumbers[i] + "," ;
+            System.out.print(data);
+        }
+        System.out.println(" ");
+        System.out.println(" ");
+        // 实现中奖逻辑
+        int red = 0;
+        boolean blue = false;
+
+        for (int i = 0; i < luckynumbers.length-1; i++) {
+            if (i == luckydata.length - 1){
+                if (luckydata[i] == 1){
+                    blue = true;
+                }
+            }else {
+                if (luckydata[i] == 1){
+                    red++;
+                }
+            }
+        }
+
+        if (red == 6 && blue){
+            System.out.println("一等奖，6+1,奖金最高1000万。");
+        } else if (red == 6) {
+            System.out.println("二等奖，6+0,奖金最高500万。");
+        } else if (red == 5 && blue) {
+            System.out.println("三等奖，5+1,奖金3000元。");
+        } else if (red == 5) {
+            System.out.println("四等奖，5+0,奖金200元。");
+        } else if (red == 4 && blue) {
+            System.out.println("四等奖，4+1,奖金200元。");
+        } else if (red == 4) {
+            System.out.println("五等奖，4+0,奖金10元。");
+        } else if (red == 3 && blue) {
+            System.out.println("五等奖，3+1,奖金10元。");
+        } else if (red == 2 && blue) {
+            System.out.println("六等奖，2+1,奖金5元。");
+        } else if (red == 1 && blue) {
+            System.out.println("六等奖，1+1,奖金5元。");
+        } else if (red == 0 && blue) {
+            System.out.println("六等奖，0+1,奖金5元。");
+        } else if (red <= 3 && !blue){
+            Random rc = new Random();
+            String [] prln = {
+                    "这是一场豪赌", "还能再赌一赌", "还有三次机会", "要不放手一搏",
+                    "都到这份上了", "输得一塌糊涂", "再信我一次", "重开一定行"
+            };
+            int num = rc.nextInt(8);
+            System.out.println("很遗憾，你没中奖。\n"+prln[num]+",朋友");
+        }
+
+
+    }       //  main 闭合
+
+
+    private static int[] usernumber() {
+        int [] numbers = new int[7];
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0 ;i < numbers.length-1 ;i++) {
+            while (true) {
+                System.out.print("请输入红球数据： ");
+                int input = sc.nextInt();   // 等待用户输入。
+                // 检查输入合法性
+                if (input<34&&input>=1){
+                    // 检查数字是否重复
+                    if (exist(numbers,input)) {     // 通过exist方法验证，返回true值。
+                        System.out.println("输入有效，数据已更新. ");
+                        numbers[i] = input;     // 更新numbers数组对应位置值
+                        break;
+                    } else {        // 未通过exist方法验证，返回false值。
+                        System.out.println("数字重复，请重新输入 取值范围为 （1-33）");
+                    }
+                }else {
+                    System.out.println("输入有误，请重新输入 取值范围为 （1-33）");
+                }
+            }
+
+        }
+        while (true) {
+            System.out.print("请输入 [蓝球] 的数值： ");
+            int input = sc.nextInt();
+            if (input<17&&input>=1){
+                // 输入合法，开始检测重复性
+                if (exist(numbers,input)) {
+                    System.out.println("输入有效，数据已更新。");
+                    numbers[6] = input;
+                    break;
+                }else {
+                    System.out.println("数据[重复]，请重新输入。");
+                }
+            }else {
+                System.out.println("数据无效，请重新输入。");
+            }
+        }
+
+        return numbers;
+    }
+
+    private static boolean exist(int[] numbers, int input) {
+        // 数据已存在于数组中时，返回false，验证未通过。
+        // 数据不存在于数组中时，返回true，验证通过。
+        for (int number : numbers) {
+            if (number == input) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static int [] luckynumber() {
+        int [] numbers = new int[7];
+        Random rc = new Random();
+        //  生成红球
+        for (int i = 0; i < 6; i++) {
+            while (true) {
+                int input = rc.nextInt(33)+1;
+                // 判断，使用exist方法，当返回true值时，执行写入操作，并跳出循环
+                if (exist(numbers,input)){
+                    numbers[i] = input;
+                    break;
+                }
+            }
+        }
+        //  生成篮球
+        while (true) {
+            int input = rc.nextInt(16)+1;
+            // 判断是否存在相同数值，返回true时，执行写入操作
+            if (exist(numbers,input)) {
+                numbers[6] = input;
+                break;
+            }
+        }
+
+        return numbers;
+    }
+
+    private static int[] judgement(int [] usernumber,int [] luckynumber) {
+        // 对比方法
+        int[] list = new int[7];    // 储存中奖信息
+        // 0 1 2 3 4 5 6
+        for (int i = 0; i < 7; i++) {
+            // 循环读取两个列表中的同位置元素，若出现相同的，则返回false，验证不通过
+            if (usernumber[i] == luckynumber[i]){
+                list[i] = 1;
+            }
+        }
+        if (usernumber[6] == luckynumber[6]){
+            list[6] = 1;
+        }
+        return list;
+    }
+
+}
+
+
+
