@@ -37,7 +37,7 @@ public class ClassWork {
 
 ```
 
-### 参与与贡献   Contributors
+### 参与贡献   Contributors
 
 感谢以下为该项目做出贡献的人员
 
