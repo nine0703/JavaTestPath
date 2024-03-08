@@ -1,6 +1,10 @@
 package com.test.main.Demo01;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -38,13 +42,26 @@ public class Demo01 {
 //        }
 
         //  日期和时间： 编写一个程序，计算当前日期距离未来某个特定日期的天数，并输出结果。
-        long time = System.currentTimeMillis();
-        System.out.println(time);
+        long time = System.currentTimeMillis(); //  获取当前时间毫秒值
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String s = formatter.format(time);
         System.out.println(s);
 
 
+        String dateTimeStr = "2024-03-08 23:38:24";
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // 船新的时间格式化工具对象
+        LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr, dtf);
+
+        // 将LocalDateTime对象转换为ZonedDateTime对象，这里使用了系统默认时区
+        ZonedDateTime zonedDateTime = dateTime.atZone(ZoneId.systemDefault());
+
+        // 将ZonedDateTime对象转换为时间戳
+        long timestamp = zonedDateTime.toInstant().toEpochMilli();
+
+        // 如果您想将时间戳转换回字符串，可以使用SimpleDateFormat
+        String timestampStr = formatter.format(timestamp);
+        System.out.println(timestamp);
 
     }   //  method main end.
 
