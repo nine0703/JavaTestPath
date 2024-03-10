@@ -15,6 +15,7 @@ public class Stream {
         Stream fileStream = (Stream) list.stream();
 
 
+
     }   //  method main end.
 
 }   // class end.
