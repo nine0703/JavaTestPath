@@ -1,4 +1,4 @@
-package com.test.main.Demo01;
+package front.Demo01;
 
 public class Demo02 {
     /*      网络编程： 使用 Java 网络编程实现一个简单的客户端-服务器应用，可以在客户端和服务器之间传输文本消息。

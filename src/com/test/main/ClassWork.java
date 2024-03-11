@@ -2,12 +2,13 @@ package com.test.main;
 
 public class ClassWork {
     public static void main(String[] args) {
-        int [] arr = {72, 89, 65, 87, 91, 82, 71, 93, 76, 68};
-        int sum = 0;
-        for (int j : arr){
-            sum +=  j;
+        String source = "《Head First Java》、《Effective Java》、《Python核心编程》、《Java并发实践》、《Thinking in Java》、《Python编程快速上手》";
+        String[] split = source.split("、");
+        for (String s : split) {
+            if (s.contains("Java")){
+                System.out.println(s);
+            }
         }
-        System.out.println(sum/arr.length);
-
     }   //  method main end.
+
 }   // class end.
