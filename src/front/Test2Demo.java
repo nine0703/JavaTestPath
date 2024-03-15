@@ -4,12 +4,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Test2Demo {
-    /*
-        需求：键盘录入一个字符串，实现下面的功能
-            1.判断字符串的第一个字符和最后一个字符是否相等，如果不相等，则把字符串反转
-            2.创建一个新的字符数组，用来保存字符串中每一个字符
-            3.把字符数组中索引为奇数的元素修改为 @
-     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("请输入一个字符串");

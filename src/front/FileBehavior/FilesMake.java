@@ -1,16 +1,15 @@
 package front.FileBehavior;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FilesMake {
     public static void main(String[] args) throws IOException {
-        FileInputStream fis = new FileInputStream("src/front/FileBehavior/resources/file");
-        byte[] bytes = fis.readAllBytes();
-        String str = new String(bytes, StandardCharsets.UTF_8); // 指定字符集，通常是UTF-8
-        System.out.println(str);
-
+        Map<String, Integer> map = new HashMap<>();
+        map.put("你好",1);
+        map.put("你好2",1);
+        System.out.println(map);
     } // method main end.
 
 }   // class end.
