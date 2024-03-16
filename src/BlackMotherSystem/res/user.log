@@ -1,0 +1,52 @@
+2024-03-16 18:11:18.221 [main] INFO  Student_Teacher_Utils - deSerialize() start
+2024-03-16 18:11:18.224 [main] INFO  Student_Teacher_Utils - deSerialize() COMPLETE
+2024-03-16 18:11:21.205 [main] INFO  Student_Teacher_Utils - addStudent() start
+2024-03-16 18:11:24.335 [main] INFO  Student_Teacher_Utils - addStudent() COMPLETE
+2024-03-16 18:11:34.961 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 18:11:40.690 [main] INFO  Student_Teacher_Utils - addStudent() start
+2024-03-16 18:11:44.651 [main] INFO  Student_Teacher_Utils - addStudent() COMPLETE
+2024-03-16 18:11:52.886 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 18:12:04.361 [main] INFO  Student_Teacher_Utils - serialize() start
+2024-03-16 18:12:04.362 [main] INFO  Student_Teacher_Utils - serialize() COMPLETE
+2024-03-16 20:35:04.236 [main] INFO  Student_Teacher_Utils - deSerialize() start
+2024-03-16 20:35:04.238 [main] WARN  Student_Teacher_Utils - userinfo is absent or null , return list.
+2024-03-16 20:35:38.849 [main] INFO  Student_Teacher_Utils - addStudent() start
+2024-03-16 20:35:49.246 [main] INFO  Student_Teacher_Utils - addStudent() COMPLETE
+2024-03-16 20:35:52.492 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 20:36:06.411 [main] INFO  Student_Teacher_Utils - addStudent() start
+2024-03-16 20:36:13.904 [main] INFO  Student_Teacher_Utils - addStudent() COMPLETE
+2024-03-16 20:36:16.515 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 20:36:30.239 [main] INFO  Student_Teacher_Utils - serialize() start
+2024-03-16 20:36:30.239 [main] WARN  Student_Teacher_Utils - userinfo is absent or null , makefile.
+2024-03-16 20:36:30.240 [main] ERROR Student_Teacher_Utils - userinfo make failed.
+2024-03-16 20:36:30.240 [main] INFO  Student_Teacher_Utils - serialize() COMPLETE
+2024-03-16 20:36:30.240 [main] INFO  BlackMotherSystem - exit 0
+2024-03-16 20:37:43.772 [main] INFO  Student_Teacher_Utils - deSerialize() start
+2024-03-16 20:37:43.773 [main] WARN  Student_Teacher_Utils - userinfo is absent or null , return list.
+2024-03-16 20:37:50.432 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 20:39:18.235 [main] INFO  Student_Teacher_Utils - deSerialize() start
+2024-03-16 20:39:18.236 [main] WARN  Student_Teacher_Utils - userinfo is absent or null , return list.
+2024-03-16 20:39:20.115 [main] INFO  Student_Teacher_Utils - addStudent() start
+2024-03-16 20:39:25.223 [main] INFO  Student_Teacher_Utils - addStudent() COMPLETE
+2024-03-16 20:39:27.878 [main] INFO  Student_Teacher_Utils - serialize() start
+2024-03-16 20:39:27.901 [main] INFO  Student_Teacher_Utils - serialize() COMPLETE
+2024-03-16 20:39:27.902 [main] INFO  BlackMotherSystem - exit 0
+2024-03-16 20:40:15.165 [main] INFO  Student_Teacher_Utils - deSerialize() start
+2024-03-16 20:40:15.198 [main] INFO  Student_Teacher_Utils - deSerialize() COMPLETE
+2024-03-16 20:40:24.196 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 20:54:10.726 [main] INFO  Student_Teacher_Utils - deSerialize() start
+2024-03-16 20:54:10.755 [main] INFO  Student_Teacher_Utils - deSerialize() COMPLETE
+2024-03-16 20:54:23.703 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 21:15:30.174 [main] INFO  Student_Teacher_Utils - deSerialize() start
+2024-03-16 21:15:30.202 [main] INFO  Student_Teacher_Utils - deSerialize() COMPLETE
+2024-03-16 21:15:33.698 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 21:15:41.430 [main] INFO  Student_Teacher_Utils - addStudent() start
+2024-03-16 21:15:49.912 [main] INFO  Student_Teacher_Utils - addStudent() COMPLETE
+2024-03-16 21:15:51.307 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 21:16:00.757 [main] INFO  Student_Teacher_Utils - serialize() start
+2024-03-16 21:16:00.761 [main] INFO  Student_Teacher_Utils - serialize() COMPLETE
+2024-03-16 21:16:00.761 [main] INFO  BlackMotherSystem - exit 0
+2024-03-16 21:17:09.547 [main] INFO  Student_Teacher_Utils - deSerialize() start
+2024-03-16 21:17:09.574 [main] INFO  Student_Teacher_Utils - deSerialize() COMPLETE
+2024-03-16 21:17:15.826 [main] INFO  Student_Teacher_Utils - showStudent() COMPLETE
+2024-03-16 21:17:30.936 [main] INFO  Student_Teacher_Utils - addStudent() start

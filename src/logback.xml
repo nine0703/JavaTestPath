@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <!-- CONSOLE ：表示当前的日志信息是可以输出到控制台的。-->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <!--输出流对象 默认 System.out 改为 System.err-->
         <target>System.out</target>
@@ -19,7 +17,7 @@
             <charset>utf-8</charset>
         </encoder>
         <!--日志输出路径-->
-        <file>src/Made_in_Fri_Mar/resources/user.log</file>
+        <file>src/BlackMotherSystem/res/user.log</file>
         <!--指定日志文件拆分和压缩规则-->
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -30,12 +28,8 @@
         </rollingPolicy>
     </appender>
 
-    <!-- 设置 ConsoleAnnotationBeanPostProcessor 的日志级别为ERROR -->
-    <logger name="ch.qos.logback.classic.joran.JoranConfigurator" level="ERROR"/>
-    <logger name="ch.qos.logback" level="ERROR"/>
-    <!--    1、控制日志的输出情况：如，开启日志 ALL，取消日志 OFF    -->
-    <root level="DEBUG">
-        <appender-ref ref="CONSOLE"/> <!--开启打印到控制台-->
+    <root level="warn">
+<!--        <appender-ref ref="CONSOLE"/> &lt;!&ndash;开启打印到控制台&ndash;&gt;-->
         <appender-ref ref="FILE" /> <!--开启打印到文件-->
     </root>
 
