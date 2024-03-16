@@ -1,0 +1,4 @@
+2024-03-16 15:15:43.411 [main] INFO  M.Prop_xml_other.xmlread - hello world!
+2024-03-16 15:15:43.413 [main] ERROR M.Prop_xml_other.xmlread - FileReader对象创建失败
+2024-03-16 15:16:09.347 [main] INFO  M.Prop_xml_other.xmlread - hello world!
+2024-03-16 15:16:09.349 [main] ERROR M.Prop_xml_other.xmlread - FileReader对象创建失败
