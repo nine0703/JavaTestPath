@@ -75,8 +75,8 @@ public class Student_Teacher_Utils {
     public static void changeStudent(ArrayList<Student> list) {
         logger.info("changeStudent() start");
         System.out.println("选择你想操作的业务：");
-        System.out.println("1.根据id删除");
-        System.out.println("2.根据名字删除");
+        System.out.println("1.根据id修改");
+        System.out.println("2.根据名字修改");
         System.out.println("输入您选择的选项：");
         Student s = null;
         Scanner sc = new Scanner(System.in);
@@ -89,7 +89,7 @@ public class Student_Teacher_Utils {
                 for (Student j : list){
                     if (j.getId() == id){
                         s = j;
-                        return;
+                        break;
                     }
                 }
                 System.out.println("找不到对象，检查id");
@@ -100,42 +100,55 @@ public class Student_Teacher_Utils {
                 for (Student j : list){
                     if (j.getName().equals(name)){
                         s = j;
-                        return;
+                        break;
                     }
                 }
                 break;
             default:
-                System.out.println("找不到对象，检查");
+                System.out.println("找不到对象，检查名字");
             }
-            while (s != null){
-                System.out.println("请输入您想修改的数据：");
-                System.out.println("1.id");
-                System.out.println("2.name");
-                System.out.println("3.age");
-                input = sc.nextInt();
-                switch (input){
-                    case 1:
-                        System.out.println("请输入id：");
-                        int id = sc.nextInt();
-                        logger.info("changeStudent() changeId");
-                        s.setId(id);
-                        break;
-                    case 2:
-                        System.out.println("请输入name：");
-                        String name = sc.next();
-                        logger.info("changeStudent() changeName");
-                        s.setName(name);
-                        break;
-                    case 3:
-                        System.out.println("请输入age：");
-                        int age = sc.nextInt();
-                        logger.info("changeStudent() changeAge");
-                        s.setAge(age);
-                        break;
-                    default:
-                        System.out.println("输入不合法");
-                    }
+            if (s != null) {
+                boolean flag = true;    // 信号位
+                while (flag){
+                    System.out.println("请输入您想修改的数据：");
+                    System.out.println("1.id");
+                    System.out.println("2.name");
+                    System.out.println("3.age");
+                    System.out.println("4.查看当前信息");
+                    System.out.println("5.退出");
+                    input = sc.nextInt();
+                    switch (input){
+                        case 1:
+                            System.out.println("请输入id：");
+                            int id = sc.nextInt();
+                            logger.info("changeStudent() changeId");
+                            s.setId(id);
+                            break;
+                        case 2:
+                            System.out.println("请输入name：");
+                            String name = sc.next();
+                            logger.info("changeStudent() changeName");
+                            s.setName(name);
+                            break;
+                        case 3:
+                            System.out.println("请输入age：");
+                            int age = sc.nextInt();
+                            logger.info("changeStudent() changeAge");
+                            s.setAge(age);
+                            break;
+                        case 4:
+                            System.out.println(s);
+                            break;
+                        case 5:
+                            System.out.println("修改成功，再见");
+                            flag = false;
+                            logger.info("changeStudent() COMPLETE");
+                            break;
+                        default:
+                            System.out.println("输入不合法");
+                        }
 
+                }
             }
         logger.info("changeStudent() COMPLETE");
     }   //  method end.
