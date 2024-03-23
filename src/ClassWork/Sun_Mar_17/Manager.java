@@ -1,6 +1,6 @@
 package ClassWork.Sun_Mar_17;
 
-public class Manager extends staff_member implements STAFF{
+public class Manager extends StaffMember implements STAFF{
     private double bonus ;
 
     public Manager() {

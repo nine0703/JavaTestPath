@@ -1,8 +1,7 @@
-package com.test.main;
+package MRTestColle;
 
-public class MRTest {
+public class Mttest {
     public static void main(String[] args) {
-            
 
     }   //  method main end.
 

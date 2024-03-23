@@ -1,13 +1,13 @@
 package ClassWork.Sun_Mar_17;
 
-public abstract class staff_member {
+public abstract class StaffMember {
     private String name ;
     private int id ;
     private double salary ;
 
-    protected staff_member() {
+    protected StaffMember() {
     }
-    protected staff_member(String name ,int id ,double salary) {
+    protected StaffMember(String name , int id , double salary) {
         this.name = name;
         this.id = id;
         this.salary = salary;

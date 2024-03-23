@@ -1,6 +1,6 @@
 package ClassWork.Sun_Mar_17;
 
-public class Coder extends staff_member implements STAFF {
+public class Coder extends StaffMember implements STAFF {
     public Coder() {
         super();
     }
