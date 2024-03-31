@@ -1,23 +1,24 @@
 package MRTestColle;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.File;
+import java.io.FileInputStream;
+import java.nio.charset.StandardCharsets;
 
 class MRTest {
     public static void main(String[] args) {
-        String data = "来黑马程序员学习Java，" +
-                "电话：13888888888，1377777777" +
-                "或者联系邮箱：boniu@itcast.com.cn" +
-                "座机电话：01036517895，010-98951256" +
-                "邮箱：bozai@itcast.cn，" +
-                "邮箱2：zhangsan0009@163.com，" +
-                "热线电话：400-618-9090，400-618-4000，" +
-                "4006184000，4006189090";
-        Pattern p = Pattern.compile("1[3-9]\\d{9}|0\\d{2}-?[1-9]\\d{7}|400-?\\d{3}-?\\d{4}");
-        Matcher m = p.matcher(data);
-        while (m.find()){
-            String phone = m.group();
-            System.out.println(phone);
+//使用字节输入流和输出流，读取文件的内容输出到控制台
+//
+//sg.txt文件内容如下：
+        File file = new File("src/Resource/sg.txt");
+        try (FileInputStream fis = new FileInputStream(file)) {
+            byte[] buffer = new byte[1024 * 8];
+            int length;
+            while ((length = fis.read(buffer)) != -1){
+                System.out.println(new String(buffer,0,length, StandardCharsets.UTF_8));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-    }   //  method main end.
+
+    }   // Method main end.
 }   // class end.
