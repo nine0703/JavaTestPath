@@ -38,6 +38,7 @@ public class MunHighTest {
             System.out.println(k);
             m.forEach((e, v) -> System.out.println("\t"+e + "::" + v));
         });
+        // 测试
 
     }   // Method main end.
 
