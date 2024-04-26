@@ -1,0 +1,7 @@
+========Student========
+name String
+age int
+sex char
+height double
+hobby String
+
